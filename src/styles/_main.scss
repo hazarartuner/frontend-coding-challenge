@@ -15,6 +15,25 @@ button {
   font-family: 'Rubik', sans-serif;
 }
 
+.btn {
+  cursor: pointer;
+  height: 45px;
+  padding: 0 15px;
+  background: $primary-blue;
+  border: 0;
+  border-radius: 6px;
+  box-shadow: $darker-box-shadow;
+
+  &-secondary {
+    background: $secondary-orange;
+  }
+
+  &-sm {
+    height: 30px;
+    padding: 0 10px;
+  }
+}
+
 body {
   margin: 0;
   background: #F9F8FF;

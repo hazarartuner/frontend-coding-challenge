@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useCallback} from 'react';
+import {useNavigate} from "react-router-dom";
 import cx from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -6,13 +7,15 @@ import {
   faHeart,
   faPlayCircle,
   faSearch, faStream,
+  faArrowRight
 } from '@fortawesome/free-solid-svg-icons';
-import { ReactComponent as Avatar } from '../../../assets/images/avatar.svg';
 import './_sidebar.scss';
+import {useAppContext} from "../../../contexts/AppContext";
+import {STORAGE_KEYS} from "../../../config/constants";
 
 //TODO: Fix types here
 
-const renderSideBarOption = (link: any, icon: any, text: any, { selected }: any = {}) => {
+const renderSideBarOption = (link: string, icon: any, text: any, { selected }: any = {}) => {
   return (
     <div
       className={cx('sidebar__option', { 'sidebar__option--selected': selected })}
@@ -23,20 +26,40 @@ const renderSideBarOption = (link: any, icon: any, text: any, { selected }: any 
   )
 }
 
-export default class SideBar extends React.Component {
-  render = () => (
+const SideBar = () => {
+  const { user, setUser  } = useAppContext();
+  const navigate = useNavigate();
+
+  const handleSignOutClick = useCallback(() => {
+    localStorage.removeItem(STORAGE_KEYS.TOKEN_DATA);
+    setUser(undefined);
+    navigate('/sign-in');
+  }, [navigate, setUser]);
+
+  return (
     <div className="sidebar">
-      <div className="sidebar__profile">
-        <Avatar />
-        <p>Bob Smith</p>
-      </div>
-      <div className="sidebar__options">
-        {renderSideBarOption('/', faHeadphonesAlt, 'Discover', { selected: true })}
-        {renderSideBarOption('/search', faSearch, 'Search')}
-        {renderSideBarOption('/favourites', faHeart, 'Favourites')}
-        {renderSideBarOption('/playlists', faPlayCircle, 'Playlists')}
-        {renderSideBarOption('/charts', faStream, 'Charts')}
-      </div>
+        {user && (
+          <>
+            <div className="sidebar__profile">
+              <img src={user?.images[0].url} alt={user?.display_name} />
+              <p>{user?.display_name}</p>
+
+              <button className="btn-signout btn btn-secondary btn-sm" onClick={handleSignOutClick}>
+                <span>Sign Out{' '}</span>
+                <FontAwesomeIcon icon={faArrowRight} />
+              </button>
+            </div>
+            <div className="sidebar__options">
+              {renderSideBarOption('/', faHeadphonesAlt, 'Discover', { selected: true })}
+              {renderSideBarOption('/search', faSearch, 'Search')}
+              {renderSideBarOption('/favourites', faHeart, 'Favourites')}
+              {renderSideBarOption('/playlists', faPlayCircle, 'Playlists')}
+              {renderSideBarOption('/charts', faStream, 'Charts')}
+            </div>
+          </>
+        )}
     </div>
   );
 }
+
+export default SideBar;
