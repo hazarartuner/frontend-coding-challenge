@@ -1,7 +1,6 @@
+import axios from "axios";
 import {useMutation} from "@tanstack/react-query";
 import {SpotifyApiError, SpotifyTokenData} from "../../types";
-import api from "../index";
-import axios from "axios";
 
 type Params = {
   code: string;

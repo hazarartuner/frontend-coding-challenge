@@ -7,7 +7,7 @@ import {
   faHeart,
   faPlayCircle,
   faSearch, faStream,
-  faArrowRight
+  faArrowRight, IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import './_sidebar.scss';
 import {useAppContext} from "../../../contexts/AppContext";
@@ -15,7 +15,7 @@ import {STORAGE_KEYS} from "../../../config/constants";
 
 //TODO: Fix types here
 
-const renderSideBarOption = (link: string, icon: any, text: any, { selected }: any = {}) => {
+const renderSideBarOption = (link: string, icon: IconDefinition, text: string, { selected }: { selected?: boolean } = {}) => {
   return (
     <div
       className={cx('sidebar__option', { 'sidebar__option--selected': selected })}
