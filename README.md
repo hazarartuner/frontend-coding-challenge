@@ -1,35 +1,22 @@
 # **FRONTEND CODING CHALLENGE**
 Basic Spotify clone challenge. The service will be responsible for API response and loading state handling.
-# **Pre-requisites**
+
+The Authentication flow is made by PKCE Flow because it is the recommended flow for single page apps.
+
+# **Getting Started**
 - Clone the base code from GitHub link
-- Add these environment variables to “.env” file in root directory to use Spotify APIs
+- Create a new `.env` file by using the `.env.sample` file. This file contains three environment variables, all of which you need to set properly.
 
-`	`○	REACT\_APP\_SPOTIFY\_CLIENT\_ID
+- REACT_APP_SPOTIFY_CLIENT_ID: Obtain this from your developer account
 
-`	`○	REACT\_APP\_SPOTIFY\_CLIENT\_SECRET
+- REACT_APP_SPOTIFY_REDIRECT_URI: This is the URI that you must also configure in your Spotify developer app. This app expects a pathname of `/callback` for the redirect URI. For instance, if your app runs at http://localhost:3000, set the redirect URI to http://localhost:3000/callback both in the .env file and on your app's settings page.
 
-`	`○	You can look at [Spotify API Documentation](https://developer.spotify.com/documentation/)
-# **Requirements**
-- Display “Released This Week” songs
+- REACT_APP_SPOTIFY_API_BASE_URI: **You don't need to change it, you can use like inside the .env.sample without changing it. This is the base path for the api calls.**
 
-`            `With using *new-releases* API path
+- You can look at [Spotify API Documentation](https://developer.spotify.com/documentation/)
 
-- Display “Featured Playlists”
+- You can start the app in development mode by using `yarn start`.
 
-`            `With using *featured-playlists* API path
+- You can also use the Dockerfile to run the app in a Docker environment.
 
-- Display “Browse genres”
-
-`            `With using *categories* API path
-# **Notes**
-- Candidates can clone base code from GitHub repository.
-
-
-- We expect that all *#TODO* marks in the application should be completed by the candidate.
-- It is expected that the UI/UX and responsive designs of the "Released This Week", "Featured Playlists", "Browse genres"  blocks are made in accordance with the general design of the candidate. 
-# **Rules**
-- React and TypeScript is mandatory.
-- Sass or Scss is mandatory.
-- Dockerizing the app is a plus.
-- Documentation/comment in the code is a plus.
-- Extra UI components and API requests are optional.
+When you first launch the app, you should see a page with a Connect button. Clicking on this button will take you to a permissions page where you can grant access to the app. After granting access, you will be redirected to the home page to see the app in action.
