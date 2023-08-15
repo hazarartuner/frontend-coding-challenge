@@ -6,10 +6,11 @@ module.exports = {
     sourceType: 'module',
     ecmaVersion: 2020
   },
-  plugins: ['@typescript-eslint/eslint-plugin'],
+  plugins: ['@typescript-eslint/eslint-plugin', 'sonarjs'],
   extends: [
     'plugin:@typescript-eslint/recommended',
     'plugin:prettier/recommended',
+    'plugin:sonarjs/recommended'
   ],
   root: true,
   env: {

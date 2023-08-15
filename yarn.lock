@@ -5668,6 +5668,11 @@ eslint-plugin-react@^7.27.1:
     semver "^6.3.1"
     string.prototype.matchall "^4.0.8"
 
+eslint-plugin-sonarjs@0.20.0:
+  version "0.20.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-sonarjs/-/eslint-plugin-sonarjs-0.20.0.tgz#215529e6e89c5c9b5cb6af9e7ef9a1ce45c53bb0"
+  integrity sha512-BRhZ7BY/oTr6DDaxvx58ReTg7R+J8T+Y2ZVGgShgpml25IHBTIG7EudUtHuJD1zhtMgUEt59x3VNvUQRo2LV6w==
+
 eslint-plugin-testing-library@^5.0.1:
   version "5.11.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-testing-library/-/eslint-plugin-testing-library-5.11.1.tgz#5b46cdae96d4a78918711c0b4792f90088e62d20"
