@@ -38,7 +38,6 @@ export const AppProvider: FC<{ children: ReactElement }> = (props) => {
       .get<SpotifyUser>(`${process.env.REACT_APP_SPOTIFY_API_BASE_URI}/me`)
       .then((response) => {
         setUser(response.data);
-        setIsLoading(false);
       })
       .catch(() => {
         setUser(undefined);
