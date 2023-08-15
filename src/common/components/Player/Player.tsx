@@ -4,7 +4,7 @@ import {
   faStepForward,
   faPlayCircle,
   faStepBackward,
-  faEllipsisH
+  faEllipsisH,
 } from '@fortawesome/free-solid-svg-icons';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
 import { faRandom } from '@fortawesome/free-solid-svg-icons';

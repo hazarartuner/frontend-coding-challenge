@@ -1,12 +1,12 @@
-import {useEffect} from "react";
-import {useNavigate, useSearchParams} from "react-router-dom";
+import { useEffect } from 'react';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import {STORAGE_KEYS} from "../../../config/constants";
-import useGetToken from "../../../api/hooks/useGetToken";
-import Loader from "../../../common/components/Loader";
-import {useAppContext} from "../../../contexts/AppContext";
-import api from "../../../api";
-import {SpotifyUser} from "../../../types";
+import { STORAGE_KEYS } from '../../../config/constants';
+import useGetToken from '../../../api/hooks/useGetToken';
+import Loader from '../../../common/components/Loader';
+import { useAppContext } from '../../../contexts/AppContext';
+import api from '../../../api';
+import { SpotifyUser } from '../../../types';
 
 const Callback = () => {
   const navigate = useNavigate();
@@ -21,18 +21,18 @@ const Callback = () => {
   useEffect(() => {
     async function signIn() {
       if (error) {
-        toast('Access denied', { type: 'error' })
+        toast('Access denied', { type: 'error' });
         navigate('/sign-in');
         return;
       }
 
       if (!code) {
-        toast('There is no "code" parameter!', { type: 'error' })
+        toast('There is no "code" parameter!', { type: 'error' });
         return;
       }
 
       if (!codeVerifier) {
-        toast('There is no "codeVerifier"!', { type: 'error' })
+        toast('There is no "codeVerifier"!', { type: 'error' });
         return;
       }
 
@@ -57,22 +57,21 @@ const Callback = () => {
       }, 1000);
     }
 
-    signIn()
-      .catch((error) => {
-        // Calculate the error message. It may come from spotify api but
-        // also it can be any other type of error
-        const { error_description } = error?.response?.data ?? {};
-        const description = error_description ? error_description : 'Unexpected error happened';
+    signIn().catch((error) => {
+      // Calculate the error message. It may come from spotify api but
+      // also it can be any other type of error
+      const { error_description } = error?.response?.data ?? {};
+      const description = error_description ? error_description : 'Unexpected error happened';
 
-        // we may send the error to the error service
-        console.error(error);
+      // we may send the error to the error service
+      console.error(error);
 
-        // show the error message
-        toast(description, { type: 'error' });
+      // show the error message
+      toast(description, { type: 'error' });
 
-        // Navigate the user to the sign-in page to let the user try again.
-        navigate('/sign-in');
-      });
+      // Navigate the user to the sign-in page to let the user try again.
+      navigate('/sign-in');
+    });
   }, [error, code, codeVerifier, getToken, navigate, setUser]);
 
   return <Loader />;

@@ -1,23 +1,23 @@
-import {AxiosError} from "axios";
+import { AxiosError } from 'axios';
 
 export type SpotifyTokenData = {
   code: string;
-  codeVerifier: string
+  codeVerifier: string;
   access_token: string;
   expires_in: number;
   refresh_token: string;
   scope: string;
   token_type: string;
-}
+};
 
 export type SpotifyApiError = AxiosError<{
   error: string;
   error_description: string;
-}>
+}>;
 
 type ExternalUrls = {
   spotify: string;
-}
+};
 
 export type SpotifyUser = {
   display_name: string;
@@ -108,12 +108,12 @@ export type Owner = {
   id: string;
   type: string;
   uri: string;
-}
+};
 
 export type TracksRef = {
   href: string;
   total: number;
-}
+};
 
 export type PlaylistItem = {
   collaborative: boolean;
@@ -130,21 +130,21 @@ export type PlaylistItem = {
   tracks: TracksRef;
   type: string;
   uri: string;
-}
+};
 
 export type Playlists = {
   href: string;
   items: PlaylistItem[];
-}
+};
 
 export type PlaylistsResponse = {
   message: string;
   playlists: Playlists;
-}
+};
 
 export type CategoriesResponse = {
   categories: Categories;
-}
+};
 
 export type Categories = {
   href: string;
@@ -154,13 +154,11 @@ export type Categories = {
   offset: number;
   previous: null | string;
   total: number;
-}
+};
 
 export type CategoryItem = {
   href: string;
   icons: Image[];
   id: string;
   name: string;
-}
-
-
+};

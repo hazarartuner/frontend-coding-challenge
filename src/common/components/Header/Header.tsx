@@ -10,7 +10,9 @@ export default class Header extends React.Component {
       <Hero />
       <div>
         <h1>Your favourite tunes</h1>
-        <h2>All <FontAwesomeIcon icon={faSun} /> and all <FontAwesomeIcon icon={faMoon} /></h2>
+        <h2>
+          All <FontAwesomeIcon icon={faSun} /> and all <FontAwesomeIcon icon={faMoon} />
+        </h2>
       </div>
     </div>
   );

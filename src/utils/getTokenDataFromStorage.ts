@@ -1,5 +1,5 @@
-import { STORAGE_KEYS } from "../config/constants";
-import { SpotifyTokenData } from "../types";
+import { STORAGE_KEYS } from '../config/constants';
+import { SpotifyTokenData } from '../types';
 
 export default function getTokenDataFromStorage() {
   const tokenDataStr = localStorage.getItem(STORAGE_KEYS.TOKEN_DATA);

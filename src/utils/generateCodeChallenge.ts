@@ -2,14 +2,11 @@ export default async function generateCodeChallenge(codeVerifier: string) {
   function base64encode(buffer: ArrayBuffer) {
     const byteArray = new Uint8Array(buffer);
     let binaryStr = '';
-    byteArray.forEach(byte => {
+    byteArray.forEach((byte) => {
       binaryStr += String.fromCharCode(byte);
     });
 
-    return btoa(binaryStr)
-      .replace(/\+/g, '-')
-      .replace(/\//g, '_')
-      .replace(/=+$/, '');
+    return btoa(binaryStr).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
   }
 
   const encoder = new TextEncoder();

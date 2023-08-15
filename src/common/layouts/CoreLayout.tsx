@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet } from "react-router-dom";
+import { Outlet } from 'react-router-dom';
 import Header from '../components/Header';
 import SideBar from '../components/SideBar';
 import Player from '../components/Player';
@@ -17,6 +17,6 @@ const CoreLayout = () => {
       <Player />
     </div>
   );
-}
+};
 
 export default CoreLayout;

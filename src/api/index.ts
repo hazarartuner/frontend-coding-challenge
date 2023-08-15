@@ -1,23 +1,25 @@
 import axios from 'axios';
-import getTokenDataFromStorage from "../utils/getTokenDataFromStorage";
+import getTokenDataFromStorage from '../utils/getTokenDataFromStorage';
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_SPOTIFY_API_BASE_URI,
 });
 
 // interceptor for adding access token to the header
-api.interceptors.request.use((config) => {
-  const tokenData = getTokenDataFromStorage();
+api.interceptors.request.use(
+  (config) => {
+    const tokenData = getTokenDataFromStorage();
 
-  if (tokenData) {
-    config.headers.Authorization = `Bearer ${tokenData.access_token}`;
-  }
+    if (tokenData) {
+      config.headers.Authorization = `Bearer ${tokenData.access_token}`;
+    }
 
-  return config;
-}, error => {
-  return Promise.reject(error);
-});
-
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  },
+);
 
 /**
  * Refresh Token Interceptor

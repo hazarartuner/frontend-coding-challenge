@@ -1,13 +1,13 @@
-import { createContext, FC, ReactElement, useContext, useEffect, useMemo, useState } from "react";
-import { SpotifyUser } from "../types";
-import api from "../api";
-import getTokenDataFromStorage from "../utils/getTokenDataFromStorage";
+import { createContext, FC, ReactElement, useContext, useEffect, useMemo, useState } from 'react';
+import { SpotifyUser } from '../types';
+import api from '../api';
+import getTokenDataFromStorage from '../utils/getTokenDataFromStorage';
 
 type ContextValue = {
-  user?: SpotifyUser,
-  setUser(user?: SpotifyUser): void,
-  isLoading: boolean,
-}
+  user?: SpotifyUser;
+  setUser(user?: SpotifyUser): void;
+  isLoading: boolean;
+};
 
 const initialValue = {
   user: undefined,
@@ -34,27 +34,28 @@ export const AppProvider: FC<{ children: ReactElement }> = (props) => {
 
     setIsLoading(true);
 
-    api.get<SpotifyUser>(`${process.env.REACT_APP_SPOTIFY_API_BASE_URI}/me`).then((response) => {
-      setUser(response.data);
-      setIsLoading(false);
-    }).catch(() => {
-      setUser(undefined);
-    }).finally(() => {
-      setIsLoading(false);
-    })
+    api
+      .get<SpotifyUser>(`${process.env.REACT_APP_SPOTIFY_API_BASE_URI}/me`)
+      .then((response) => {
+        setUser(response.data);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setUser(undefined);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   }, [tokenData?.access_token]);
 
-  const value = useMemo((): ContextValue => ({
-    isLoading,
-    user,
-    setUser,
-  }),[isLoading, user, setUser]);
+  const value = useMemo(
+    (): ContextValue => ({
+      isLoading,
+      user,
+      setUser,
+    }),
+    [isLoading, user, setUser],
+  );
 
-  return (
-    <AppContext.Provider value={value}>
-      {children}
-    </AppContext.Provider>
-  )
-}
-
-
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+};
